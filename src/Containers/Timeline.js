@@ -5,25 +5,21 @@ import { connect } from 'react-redux';
 
 import Header from '../Containers/Header';
 import Foto from '../components/Foto/Foto';
-import TimelineApi from '../logicas/TimelineApi';
+import TimelineMiddleware from '../store/timeline/middleware';
 
 class Timeline extends Component {
 
   componentDidMount() {
-    console.log(this.props);
-
     this.props.carregarFotos('vitor')
-
   }
 
   render() {
-    console.log(this.props.fotos);
 
     return (
       <div>
         <Header />
         <div className="fotos container">
-          {this.props.fotos.map(foto => <li key={foto.id}><Foto foto={foto}/></li>)}
+          {this.props.fotos.map(foto => <li key={foto.id}><Foto foto={foto} /></li>)}
         </div>
       </div>
     );
@@ -36,7 +32,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  carregarFotos: (login) => dispatch(TimelineApi.carregarFotos(login))
+  carregarFotos: (login) => dispatch(TimelineMiddleware.carregarFotos(login))
 });
 
 

@@ -1,26 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as serviceWorker from './serviceWorker';
+
 import { Provider } from 'react-redux';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
 
 import './css/reset.css';
 import './css/timeline.css';
 import './css/login.css';
 
 import App from './App';
-
-import * as serviceWorker from './serviceWorker';
-
-import timeline from './reducers/timeline';
-import notificacoes from './reducers/notificacoes';
-
-const reducers = combineReducers({
-  timeline,
-  notificacoes
-});
-
-const store = createStore(reducers, applyMiddleware(thunkMiddleware));
+import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>

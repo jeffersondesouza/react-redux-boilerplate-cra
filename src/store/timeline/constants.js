@@ -1,0 +1,9 @@
+export const LISTAGEM_REQUEST = 'timeline:LISTAGEM_REQUEST';
+export const LISTAGEM_SUCCESS = 'timeline:LISTAGEM_SUCCESS';
+export const LISTAGEM_FAILURE = 'timeline:LISTAGEM_FAILURE';
+export const LIKE_REQUEST = 'timeline:LIKE_REQUEST';
+export const LIKE_SUCCESS = 'timeline:LIKE_SUCCESS';
+export const LIKE_FAILURE = 'timeline:LIKE_FAILURE';
+export const COMMENT_REQUEST = 'timeline:COMMENT_REQUEST';
+export const COMMENT_SUCCESS = 'timeline:COMMENT_SUCCESS';
+export const COMMENT_FAILURE = 'timeline:COMMENT_FAILURE'; 
