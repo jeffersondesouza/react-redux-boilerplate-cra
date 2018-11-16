@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Timeline from './Containers/Timeline';
 import Login from './Containers/Login';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 class App extends Component {
   render() {
@@ -9,7 +10,8 @@ class App extends Component {
       <BrowserRouter >
         <Switch >
           <Route path="/" exact={true} component={Login} />
-          <Route path="/timeline" component={Timeline} />
+          <Route path="/page-1" component={Timeline} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
       </BrowserRouter>
     );
