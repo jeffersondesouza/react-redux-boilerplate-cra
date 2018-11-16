@@ -1,27 +1,50 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
 
 import Header from '../Containers/Header';
-
 import Foto from '../components/Foto/Foto';
+import TimelineApi from '../logicas/TimelineApi';
 
 class Timeline extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.props);
-    
+
+    this.props.carregarFotos('vitor')
+
   }
 
   render() {
+    console.log(this.props.fotos);
+
     return (
       <div>
         <Header />
         <div className="fotos container">
-          <Foto />
-          <Foto />
+          {this.props.fotos.map(foto => <li key={foto.id}><Foto foto={foto}/></li>)}
         </div>
       </div>
     );
   }
 }
 
-export default Timeline;
+
+const mapStateToProps = (state) => ({
+  fotos: state.timeline.fotos
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  carregarFotos: (login) => dispatch(TimelineApi.carregarFotos(login))
+});
+
+
+const TimelineContainer = connect(mapStateToProps, mapDispatchToProps)(Timeline);
+
+Timeline.prototypes = {
+  fotos: PropTypes.object,
+  carregarFotos: PropTypes.func
+}
+
+export default TimelineContainer;
