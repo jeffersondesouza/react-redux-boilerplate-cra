@@ -1,38 +1,47 @@
 import { List } from 'immutable';
+import {
+  FETCH_BEERS_REQUEST,
+  FETCH_BEERS_SUCCESS,
+  FETCH_BEERS_FAILURE
+} from './constants';
 
 const initialState = {
-  fotos: new List(),
-  fotoLike: null,
-  fotoComment: null,
+  beers: new List(),
+  beersNames: new List(),
+  firstBeer: null,
+  isLoadingBeers: false,
 }
 
-export default function timeline(state = initialState, action) {
-  if (action.type === 'LISTAGEM') {
+export default function exempleReducer(state = initialState, action) {
+  console.log(action);
 
-    return {
-      ...state,
-      fotos: new List(action.payload.fotos)
-    };
+  switch (action.type) {
+
+    case FETCH_BEERS_REQUEST:
+      return {
+        ...state,
+        isLoadingBeers: true
+      };
+
+    case FETCH_BEERS_SUCCESS:
+      return {
+        ...state,
+        isLoadingBeers: false,
+        beers: new List(action.payload.beers)
+      };
+
+
+    case FETCH_BEERS_FAILURE:
+      return {
+        ...state,
+        isLoadingBeers: false,
+        error: action.payload.error
+      };
+
+
+    default:
+      return state;
   }
-
-  if (action.type === 'LIKE') {
-
-    return {
-      ...state,
-      fotos: mapFotosPosLike(state.fotos, action.payload.foto.id, action.payload.liker)
-    };
-  }
-
-
-  if (action.type === 'COMMENT') {
-
-    return {
-      ...state,
-      fotos: mapFotosPosComentario(state.fotos, action.payload.foto.id, action.payload.comment),
-    };
-  }
-
-  return state;
 }
 
 
@@ -75,7 +84,7 @@ const trocaFoto = (lista, fotoId, callbackNovasPropriedades) => {
 
   const fotoEstadoAntigo = lista.find(foto => foto.id === fotoId);
   const index = lista.findIndex(foto => foto.id === fotoId);
-  
+
   const fotoEstadoNovo = {
     ...fotoEstadoAntigo,
     ...callbackNovasPropriedades(fotoEstadoAntigo)

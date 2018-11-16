@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <BrowserRouter >
         <Switch >
-          <Route path="/" exact="true" component={HomePage} />
+          <Route path="/" exact={true} component={HomePage} />
           <Route path="/page-1" component={BeersPage} />
           <Route path="*" component={NotFoundPage} />
         </Switch>

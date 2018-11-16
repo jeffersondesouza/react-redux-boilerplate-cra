@@ -18,7 +18,6 @@ const initialState = {
 }
 
 export default function timeline(state = initialState, action) {
-  console.log(action);
   
   if (action.type === LISTAGEM_REQUEST) {
     return {

@@ -1,10 +1,10 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import timeline from './timeline/reducer';
+import exempleReducer from './example/reducer';
 
 const reducers = combineReducers({
-  timeline,
+  example: exempleReducer,
 });
 
 export default createStore(reducers, applyMiddleware(thunkMiddleware));
