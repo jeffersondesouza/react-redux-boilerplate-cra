@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
-import Foto from './Foto/Foto';
+
+import Header from '../Containers/Header';
+
+import Foto from '../components/Foto/Foto';
 
 class Timeline extends Component {
 
+  componentDidMount(){
+    console.log(this.props);
+    
+  }
+
   render() {
     return (
-      <div className="fotos container">
-        <Foto />
+      <div>
+        <Header />
+        <div className="fotos container">
+          <Foto />
+          <Foto />
+        </div>
       </div>
     );
   }

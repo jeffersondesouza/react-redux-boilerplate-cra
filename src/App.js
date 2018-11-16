@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import Header from './Containers/Header';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Timeline from './Containers/Timeline';
+import Login from './Containers/Login';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Timeline />
-      </div>
+      <BrowserRouter >
+        <Switch >
+          <Route path="/" exact={true} component={Login} />
+          <Route path="/timeline" component={Timeline} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
