@@ -5,8 +5,6 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 
 import './css/reset.css';
-import './css/timeline.css';
-import './css/login.css';
 
 import App from './App';
 import store from './store';

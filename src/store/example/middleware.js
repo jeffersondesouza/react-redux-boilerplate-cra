@@ -4,7 +4,11 @@ import { fetchBeers } from "./serveAPI";
 export default class BeersMiddleware {
 
   static fetchBeers() {
+
     return dispatch => {
+      
+      dispatch(BeersAction.featchBeersRequest());
+
       fetchBeers()
         .then(beers => {
           dispatch(BeersAction.featchBeersSucces(beers));

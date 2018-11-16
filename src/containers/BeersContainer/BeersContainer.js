@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BeersMiddleware from '../../store/example/middleware';
+import Beer from '../../components/Beer/Beer';
 
 class Beers extends Component {
 
@@ -10,13 +11,15 @@ class Beers extends Component {
   }
 
   render() {
-    const { beers, firstBeer } = this.props;
+    const { beers, firstBeer, isLoadingBeers } = this.props;
+
     return (
       <div>
-        <div>First Beer: {firstBeer? firstBeer.name : 'none'}</div>
+        <div>{ (isLoadingBeers ? <p>Is Loading Beers</p> : '') }</div>
+        <div>First Beer: {firstBeer ? firstBeer.name : 'none'}</div>
         <ul>
           {
-            beers.map(beer => <li key={beer.id}>{beer.name}</li>)
+            beers.map(beer => <li key={beer.id}><Beer beer={beer} /></li>)
           }
         </ul>
       </div>

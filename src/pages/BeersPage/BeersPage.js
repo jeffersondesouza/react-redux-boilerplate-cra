@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './beers-page.css';
 
-import BeersContainer from '../../Containers/BeersContainer/BeersContainer';
+import BeersContainer from '../../containers/BeersContainer/BeersContainer';
 
 export default class BeersPage extends Component {
 

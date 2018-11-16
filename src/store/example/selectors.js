@@ -1,0 +1,1 @@
+export  const selectFirstBeer = beers => beers[0]; 
