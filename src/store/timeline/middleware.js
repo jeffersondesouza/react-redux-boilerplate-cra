@@ -1,4 +1,3 @@
-import { HeaderAction } from "../../actions/header";
 import { TimelineAction } from "./actions";
 
 export default class TimelineMiddleware {
@@ -24,9 +23,7 @@ export default class TimelineMiddleware {
         .then(res => res.json())
         .then(fotos => {
           if (fotos.length === 0) {
-            dispatch(HeaderAction.notifica('Usuário não encontrado'));
           } else {
-            dispatch(HeaderAction.notifica(''));
 
           }
           dispatch(TimelineAction.listarFotos(fotos));
